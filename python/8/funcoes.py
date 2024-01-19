@@ -7,7 +7,7 @@ def menu()-> None:
     '''
 
     print('''Menu de opções:
-\n[ 1 ] - Adicionar livro à biblioteca\n[ 2 ] - Emprestar livro\n[ 3 ] - Devolver livro\n[ 4 ] - Visualizar lista de livros\n[ 5 ] - Livro emprestado\n[ 6 ] - Sair do programa ''')
+\n[ 1 ] - Adicionar livro à biblioteca\n[ 2 ] - Emprestar livro\n[ 3 ] - Devolver livro\n[ 4 ] - Visualizar lista de livros\n[ 5 ] - Livro emprestado\n[ 6 ] - Exibe informações de um livro\n[ 7 ] - Sair do programa ''')
     
 
 

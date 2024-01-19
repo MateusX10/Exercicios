@@ -1,6 +1,6 @@
 from classes import Livro, Biblioteca
 from funcoes import *
-from arquivos import le_arquivo, verificaSeArquivoExiste, criarArquivo, lista_livros_emprestados, obtem_livro_a_ser_devolvido
+from arquivos import le_arquivo, verificaSeArquivoExiste, criarArquivo, lista_livros_emprestados, obtem_livro_a_ser_devolvido, lista_informacoes_de_um_livro
 from sys import exit
 from time import sleep
 
@@ -8,7 +8,7 @@ from time import sleep
 lista_arquivos_de_texto = ["biblioteca.txt", "livros_emprestados.txt"]
 
 
-lista_opcoes_do_menu = ["Adicionar livro", "emprestar livro", "devolver livro", "visualizar lista de livros da biblioteca", "visualizar lista de livros emprestados", "sair do programa"]
+lista_opcoes_do_menu = ["Adicionar livro", "emprestar livro", "devolver livro", "visualizar lista de livros da biblioteca", "visualizar lista de livros emprestados", "exibir informações de um livro", "sair do programa"]
 
 # itera sobre cada arquivo de texto, verificando se o arquivo de texto existe
 for arquivo_de_texto in lista_arquivos_de_texto:
@@ -42,7 +42,7 @@ while True:
     while True:
         escolha_usuario = leiaInt("Sua escolha: ")
 
-        if escolha_usuario in [1, 2, 3, 4, 5, 6]:
+        if escolha_usuario in [1, 2, 3, 4, 5, 6, 7]:
 
             break
 
@@ -162,8 +162,33 @@ while True:
 
         le_arquivo("livros_emprestados.txt")
 
-    # sai do programa
+
     elif escolha_usuario == 6:
+
+
+        arquivos_de_texto = ["biblioteca.txt", "livros_emprestados.txt"]
+
+        print('''[ 1 ] - Biblioteca
+[ 2 ] - Emprestado
+        ''')
+
+        while True:
+
+            escolhaUsuario = leiaInt("É um livro da biblioteca ou emprestado? ")
+
+            if escolhaUsuario in [1, 2]:
+
+                break
+
+            print("\033[1;31mDigite somente 1 ou 2\033[m")
+
+        arquivo = arquivos_de_texto[escolhaUsuario - 1]
+
+        lista_informacoes_de_um_livro(arquivo)
+        
+
+    # sai do programa
+    elif escolha_usuario == 7:
 
         print('\033[1;32mVolte sempre!\033[m')
 

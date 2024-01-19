@@ -200,3 +200,36 @@ def exclui_livro_do_arquivoBiblioteca(posicao_do_livro_a_ser_excluido):
 
         salva_modificacoes_no_arquivo("biblioteca.txt", lista_de_livros_da_biblioteca)
 
+
+
+def lista_informacoes_de_um_livro(nome_arquivo):
+
+    from funcoes import leiaInt
+
+    with open(nome_arquivo, "r") as arquivo:
+
+        lista_de_livros = arquivo.readlines()
+
+        for posicao, livro in enumerate(lista_de_livros):
+
+            titulo_do_livro = livro.split(";")[0]
+
+            print(f"{posicao + 1} - {titulo_do_livro}")
+
+        while True:
+
+            posicao_do_livro_escolhida_pelo_usuario = leiaInt("Escolha um livro: ")
+
+            if 0 < posicao_do_livro_escolhida_pelo_usuario <= len(lista_de_livros):
+
+                break
+
+            print("\033[1;31mOpção inválida.Por favor, informe um livro válido.\033[m")
+
+
+        
+        informacoes_do_livro = lista_de_livros[posicao_do_livro_escolhida_pelo_usuario - 1].split(";")
+
+
+        print(f"Título do livro: {informacoes_do_livro[0]}\nAutor do livro: {informacoes_do_livro[1]}\nAno de publicação: {informacoes_do_livro[2]}\nQuantidade disponível: {informacoes_do_livro[3]}")
+
