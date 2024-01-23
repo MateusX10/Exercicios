@@ -174,7 +174,7 @@ while True:
 
         while True:
 
-            escolhaUsuario = leiaInt("É um livro da biblioteca ou emprestado? ")
+            escolhaUsuario = leiaInt("É um livro da biblioteca ou emprestado? \n")
 
             if escolhaUsuario in [1, 2]:
 
