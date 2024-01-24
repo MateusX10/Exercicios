@@ -18,5 +18,11 @@ create table pessoas (
     PRIMARY KEY (id)
 )DEFAULT CHARSET=utf8;
 
+
+insert into pessoas values(DEFAULT, 'José', '1955-12-12', 'M', '100.10', '1.90', 'Portugal'),
+(DEFAULT, 'Maria', '1959-01-24', 'F', '70.00', '1.65', 'EUA'),
+(DEFAULT, 'Reginaldo', '1980-04-01', 'M', '88.10', '1.79', DEFAULT);
+
 describe pessoas;
 
+select * from pessoas;
