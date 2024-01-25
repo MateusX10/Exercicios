@@ -8,14 +8,17 @@ def menu():
     print("\n")
 
     line(30)
-    print('''Menu:\n[ 1 ] - Add task\n[ 2 ] - Mark task as completed\n[ 3 ] - List tasks\n[ 4 ] - Remove task\n[ 5 ] - Quit
+    print('''Menu:\n[ 1 ] - Add task\n[ 2 ] - Change task status\n[ 3 ] - List tasks\n[ 4 ] - Remove task\n[ 5 ] - Quit
     ''')
 
     line(30)
 
     print('\n')
 
+
 def title(message):
+
+    print("\n")
 
     size_of_message = len(message)
     
@@ -24,6 +27,8 @@ def title(message):
     line(size_of_message)
     print(message.center(width))
     line(size_of_message)
+
+    print("\n")
 
 
 

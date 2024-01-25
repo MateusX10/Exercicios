@@ -9,7 +9,7 @@ ToDoList1 = ToDoList()
 menu_valid_options = [1, 2, 3, 4, 5]
 
 
-list_of_titles = ["Add task", "mark task as completed", "list tasks", "Remove task", "quit"]
+list_of_titles = ["Add task", "Change task status", "list tasks", "Remove task", "quit"]
 
 
 while True:
@@ -61,7 +61,7 @@ while True:
 
                 if task_status == 1:
 
-                    task_status = "Pending"
+                    task_status = "pending"
 
                 else:
 
@@ -75,10 +75,18 @@ while True:
     
         ToDoList1.add_task(task_name, task_description, task_status)
 
-        # mark task as completed
+    # mark task as completed
     elif user_choice == 2:
 
-        pass
+        ToDoList1.list_tasks()
+
+        task_position = ToDoList1.get_task_position()
+
+        ToDoList1.change_task_status(task_position)
+
+
+
+
 
     # list tasks
     elif user_choice == 3:
@@ -88,7 +96,11 @@ while True:
     # remove tasks
     elif user_choice == 4:
 
-        pass
+        ToDoList1.list_tasks()
+
+        task_position = ToDoList1.get_task_position()
+
+        ToDoList1.remove_task(task_position)
     
     # quit the program
     elif user_choice == 5:
