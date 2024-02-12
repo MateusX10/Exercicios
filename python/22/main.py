@@ -1,0 +1,14 @@
+from funcs import *
+
+
+print(generate_hashtag('#codewars'))
+
+print(generate_hashtag('#comida é gostosa'))
+
+print(generate_hashtag('dkdnjwocjwcowjciowejccwck'))
+
+
+print(generate_hashtag('parelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedoparelelepipedo'))
+
+
+print(generate_hashtag(''))
