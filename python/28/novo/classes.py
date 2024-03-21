@@ -15,11 +15,44 @@ class ArquivoDeTexto:
         caminho_da_pasta = "novo/arquivo de texto/"
 
         # "path.join()" cria o arquivo no caminho da pasta especificado
-        with open(os.path.join(caminho_da_pasta, nome), "a"):
+        with open(os.path.join(caminho_da_pasta, self.nome), "a"):
 
 
             pass
+    
+        
 
+    @property
+    def nome(self):
+
+        return self._nome
+
+
+
+    @nome.setter
+    def nome(self, nome):
+
+        
+        lista_extensoes_arquivo = [
+    "txt", "csv", "json", "xml", "yaml", "ini", "html", "css", "js",
+    "py", "java", "cpp", "c", "h", "hpp", "rb", "php", "pl", "sh",
+    "bat", "ps1", "exe", "dll", "lib", "obj", "pdb", "so", "dylib",
+    "zip", "tar", "gz", "bz2", "rar", "7z", "tar.gz", "tar.bz2", "iso",
+    "img", "bin", "cue", "mdf", "nrg", "avi", "mp4", "mkv", "wmv",
+    "mp3", "wav", "ogg", "flac", "jpg", "jpeg", "png", "gif", "bmp",
+    "tiff", "psd", "ai", "svg", "eps", "pdf", "doc", "docx", "xls",
+    "xlsx", "ppt", "pptx"
+]
+
+
+
+        nome_de_arquivo_dividido = nome.split(".")
+
+        if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
+
+            nome = "".join(nome_de_arquivo_dividido[:-1]) + ".txt"
+
+        self._nome = nome
 
 
         
@@ -74,12 +107,13 @@ class ArquivoDeTexto:
 
             lista_dados = arquivo.readlines()
 
-            lista_dados.pop(posicao_da_linha_a_ser_modificada - 1)
+            lista_dados.pop(posicao_da_linha_a_ser_modificada)
 
-            lista_dados.insert(f"{novo_dado}\n", posicao_da_linha_a_ser_modificada - 1)
+            lista_dados.insert(posicao_da_linha_a_ser_modificada, f"{novo_dado}\n")
 
 
             return lista_dados
+
 
 
 
@@ -90,6 +124,18 @@ class ArquivoDeTexto:
 
 
             arquivo.writelines(novos_dados)
+
+
+    def renomeia_arquivo_de_texto(self, novo_nome):
+
+
+        antigo_nome = f"novo/arquivo de texto/{self.nome}"
+
+
+        novo_nome = f"novo/arquivo de texto/{novo_nome}"
+
+
+        os.rename(antigo_nome, novo_nome)
 
 
 

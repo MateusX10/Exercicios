@@ -87,7 +87,17 @@ while True:
             while not posicao_da_linha_a_ser_modificada:
 
 
-                posicao_da_linha_a_ser_modificada = leiaInt("Selecione uma opção: ")
+                posicao_da_linha_a_ser_modificada = (leiaInt("Selecione uma opção: ") - 1)
+
+
+                if posicao_da_linha_a_ser_modificada in opcoes_numericas_possiveis:
+
+                    break
+
+                else:
+
+
+                    posicao_da_linha_a_ser_modificada = ''
 
 
 
