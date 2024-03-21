@@ -72,7 +72,53 @@ while True:
     elif escolhaUsuario == 3:
 
 
-        pass
+        arquivo_texto1.lerArquivo()
+
+
+        dados_arquivo_de_texto = arquivo_texto1.retorna_lista_de_dados_do_arquivo_de_texto()
+
+        # obtém uma lista dos índices da lista retornada a partir dos dados do arquivo de texto
+        opcoes_numericas_possiveis = list(range(len(dados_arquivo_de_texto)))
+
+        posicao_da_linha_a_ser_modificada = novo_dado = ''
+
+
+        while True:
+            while not posicao_da_linha_a_ser_modificada:
+
+
+                posicao_da_linha_a_ser_modificada = leiaInt("Selecione uma opção: ")
+
+
+
+            while not novo_dado:
+
+
+                novo_dado = str(input("Novo dado a substituir o velho: ")).strip()
+
+
+
+            if posicao_da_linha_a_ser_modificada and novo_dado:
+
+
+                break
+
+
+            continue
+
+
+
+
+        novos_dados = arquivo_texto1.editar_arquivo(posicao_da_linha_a_ser_modificada, novo_dado)
+
+
+        arquivo_texto1.grava_alteracoes_no_arquivo_de_texto(novos_dados)
+
+
+
+
+
+    
 
 
     elif escolhaUsuario == 4:

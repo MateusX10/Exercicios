@@ -55,6 +55,45 @@ class ArquivoDeTexto:
 
 
 
+    
+    def retorna_lista_de_dados_do_arquivo_de_texto(self):
+
+
+        with open(os.path.join("novo/arquivo de texto/", self.nome), "r") as arquivo:
+
+
+            lista_dados = arquivo.readlines()
+
+
+            return lista_dados
+
+
+    def editar_arquivo(self, posicao_da_linha_a_ser_modificada, novo_dado):
+
+        with open(os.path.join("novo/arquivo de texto/", self.nome), "r") as arquivo:
+
+            lista_dados = arquivo.readlines()
+
+            lista_dados.pop(posicao_da_linha_a_ser_modificada - 1)
+
+            lista_dados.insert(f"{novo_dado}\n", posicao_da_linha_a_ser_modificada - 1)
+
+
+            return lista_dados
+
+
+
+    def grava_alteracoes_no_arquivo_de_texto(self, novos_dados):
+
+
+        with open(os.path.join("novo/arquivo de texto", self.nome), "w") as arquivo:
+
+
+            arquivo.writelines(novos_dados)
+
+
+
+
 
     def apagarArquivoDeTexto(self):
 
