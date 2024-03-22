@@ -45,7 +45,6 @@ class ArquivoDeTexto:
 ]
 
 
-
         nome_de_arquivo_dividido = nome.split(".")
 
         if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
@@ -59,6 +58,31 @@ class ArquivoDeTexto:
     def __str__(self):
 
         print(f'''Nome do arquivo de texto: {self.nome}\nTema: {self.tema}''')
+
+
+
+    def verifica_se_arquivo_esta_vazio(self):
+
+
+        caminho_do_arquivo = "novo/arquivo de texto/"
+
+
+        nome_do_arquivo = self.nome
+
+
+        arquivo_com_caminho = os.path.join(caminho_do_arquivo, nome_do_arquivo)
+
+        # o caminho/arquivo existe
+        if os.path.exists(arquivo_com_caminho):
+
+
+            return True
+
+        # o arquivo/caminho não existe
+        else:
+
+
+            return False
 
 
 
@@ -117,15 +141,6 @@ class ArquivoDeTexto:
 
 
 
-    def grava_alteracoes_no_arquivo_de_texto(self, novos_dados):
-
-
-        with open(os.path.join("novo/arquivo de texto", self.nome), "w") as arquivo:
-
-
-            arquivo.writelines(novos_dados)
-
-
     def renomeia_arquivo_de_texto(self, novo_nome):
 
 
@@ -140,9 +155,47 @@ class ArquivoDeTexto:
 
 
 
+    def excluir_linha_do_arquivo_de_texto(self, linha_a_ser_excluida):
+
+        with open(os.path.join("novo/arquivo de texto/", self.nome), "r") as arquivo:
+
+            lista_dados = arquivo.readlines()
+
+            lista_dados.pop(linha_a_ser_excluida)
+
+
+            return lista_dados
+
+
+    
+    def limpar_arquivo(self):
+
+        with open(os.path.join("novo/arquivo de texto", self.nome), "r") as arquivo:
+
+            lista_dados = arquivo.readlines()
+
+            # limpa os dados da lista
+            lista_dados.clear()
+
+
+            return lista_dados
+
+
+
+    def grava_alteracoes_no_arquivo_de_texto(self, novos_dados):
+
+
+        with open(os.path.join("novo/arquivo de texto", self.nome), "w") as arquivo:
+
+
+            arquivo.writelines(novos_dados)
+
+
+
 
     def apagarArquivoDeTexto(self):
-
+        
+        nome_arquivo = "novo"
 
         os.remove(self.nome)
 

@@ -1,6 +1,7 @@
 from classes import *
 from funcs import *
 import os
+from time import sleep
 
 # Verifica se há arquivos na lista de arquivos retornadas da pasta "arquivo de texto/" através da função "listdir()"
 if not os.listdir("novo/arquivo de texto"):
@@ -80,43 +81,38 @@ while True:
         # obtém uma lista dos índices da lista retornada a partir dos dados do arquivo de texto
         opcoes_numericas_possiveis = list(range(len(dados_arquivo_de_texto)))
 
-        posicao_da_linha_a_ser_modificada = novo_dado = ''
+        novo_dado = ''
 
 
-        while True:
-            while not posicao_da_linha_a_ser_modificada:
+        posicao_da_linha_a_ser_modificada = 0 # 0 = False
 
 
-                posicao_da_linha_a_ser_modificada = (leiaInt("Selecione uma opção: ") - 1)
+        # 0 = False
+        while not posicao_da_linha_a_ser_modificada:
+
+            posicao_da_linha_a_ser_modificada = (leiaInt("Selecione uma opção: ") - 1)
 
 
-                if posicao_da_linha_a_ser_modificada in opcoes_numericas_possiveis:
-
-                    break
-
-                else:
-
-
-                    posicao_da_linha_a_ser_modificada = ''
-
-
-
-            while not novo_dado:
-
-
-                novo_dado = str(input("Novo dado a substituir o velho: ")).strip()
-
-
-
-            if posicao_da_linha_a_ser_modificada and novo_dado:
-
+            if posicao_da_linha_a_ser_modificada in opcoes_numericas_possiveis:
 
                 break
 
+            else:
 
-            continue
+
+                posicao_da_linha_a_ser_modificada = 0 # 0 = False
 
 
+
+        while True:
+
+            novo_dado = str(input("Novo dado a substituir o velho: ")).strip()
+
+
+
+            if novo_dado:
+
+                break
 
 
         novos_dados = arquivo_texto1.editar_arquivo(posicao_da_linha_a_ser_modificada, novo_dado)
@@ -133,13 +129,77 @@ while True:
 
     elif escolhaUsuario == 4:
 
-        pass
+
+        posicoes_numericas_do_arquivo =  list(range(len(arquivo_texto1.retorna_lista_de_dados_do_arquivo_de_texto())))
+
+
+        arquivo_texto1.lerArquivo()
+
+
+        while True:
+
+
+            posicao_da_linha_a_ser_removida = leiaInt("Posição da linha a ser removida: ") - 1
+
+
+            if posicao_da_linha_a_ser_removida in posicoes_numericas_do_arquivo:
+
+
+                break
+
+
+            print("\033[1;31mOpção inexistente.Tente novamente.\033[m")
+
+
+        novos_dados = arquivo_texto1.excluir_linha_do_arquivo_de_texto(posicao_da_linha_a_ser_removida)
+
+
+        arquivo_texto1.grava_alteracoes_no_arquivo_de_texto(novos_dados)
+
+        
 
 
     elif escolhaUsuario == 5:
 
 
-        pass
+        while True:
+
+
+            print("\033[1;33;41mATENÇÃO!\033[m")
+
+            sleep(1.5)
+
+            print(f'\033[1;43mTodos os dados do arquivo "{arquivo_texto1.nome}" serão apagados.\033[m')
+
+            sleep(1.5)
+
+
+            escolhaUsuario = str(input("\033[1;43mProceder mesmo assim [S/N]? \033[m")).strip().upper()[0]
+
+
+            if escolhaUsuario in ["S", "N"]:
+
+                break
+
+
+            print("\033[1;31mPor favor, selecione uma opção válida.\033[m")
+
+
+        
+        if escolhaUsuario == "S":
+
+
+            dados_vazios = arquivo_texto1.limpar_arquivo()
+
+
+            arquivo_texto1.grava_alteracoes_no_arquivo_de_texto(dados_vazios)
+
+
+        else:
+
+
+
+            print("A exclusão dos dados do arquivo foi cancelada.")
 
 
     elif escolhaUsuario == 6:
