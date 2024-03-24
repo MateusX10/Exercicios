@@ -2,6 +2,7 @@ from classes import *
 from funcs import *
 import os
 from time import sleep
+from sys import exit
 
 # Verifica se há arquivos na lista de arquivos retornadas da pasta "arquivo de texto/" através da função "listdir()"
 if not os.listdir("novo/arquivo de texto"):
@@ -171,7 +172,7 @@ while True:
 
             print(f'\033[1;43mTodos os dados do arquivo "{arquivo_texto1.nome}" serão apagados.\033[m')
 
-            sleep(1.5)
+            sleep(2)
 
 
             escolhaUsuario = str(input("\033[1;43mProceder mesmo assim [S/N]? \033[m")).strip().upper()[0]
@@ -205,19 +206,45 @@ while True:
     elif escolhaUsuario == 6:
 
 
-        pass
+        
+
+        while True:
+
+
+            novo_nome = str(input("Novo nome do arquivo de texto: ")).strip()
+
+
+            if novo_nome:
+
+                break
+
+
+            print("\033[1;31mO nome do arquivo não pode ficar em branco.\033[m")
+
+
+        velho_nome_do_arquivo = arquivo_texto1.nome
+
+
+        arquivo_texto1.nome = novo_nome
+
+        novo_nome = arquivo_texto1.nome
+        
+        arquivo_texto1.renomeia_arquivo_de_texto(velho_nome_do_arquivo, novo_nome)
+
+
+
 
 
     elif escolhaUsuario == 7:
 
 
-        pass
+        arquivo_texto1.apagarArquivoDeTexto()
 
 
 
     elif escolhaUsuario == 8:
 
-        pass
+        exit(0)    
 
 
 

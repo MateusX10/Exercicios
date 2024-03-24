@@ -43,13 +43,21 @@ class ArquivoDeTexto:
     "tiff", "psd", "ai", "svg", "eps", "pdf", "doc", "docx", "xls",
     "xlsx", "ppt", "pptx"
 ]
+        # o arquivo possui uma extensão/formato
+        if "." in nome:
+
+            nome_de_arquivo_dividido = nome.split(".")
+
+            if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
+
+                nome = "".join(nome_de_arquivo_dividido[:-1]) + ".txt"
+
+        # arquivo não possui uma extensão, é um arquivo sem formato
+        else:
+
+            nome = f"{nome}.txt"
 
 
-        nome_de_arquivo_dividido = nome.split(".")
-
-        if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
-
-            nome = "".join(nome_de_arquivo_dividido[:-1]) + ".txt"
 
         self._nome = nome
 
@@ -141,10 +149,10 @@ class ArquivoDeTexto:
 
 
 
-    def renomeia_arquivo_de_texto(self, novo_nome):
+    def renomeia_arquivo_de_texto(self, velho_nome_do_arquivo, novo_nome):
 
 
-        antigo_nome = f"novo/arquivo de texto/{self.nome}"
+        antigo_nome = f"novo/arquivo de texto/{velho_nome_do_arquivo}"
 
 
         novo_nome = f"novo/arquivo de texto/{novo_nome}"
@@ -193,17 +201,32 @@ class ArquivoDeTexto:
 
 
 
+    def renomear_arquivo_de_texto(self, novo_nome):
+
+
+        nome_atual = os.path.join("novo/arquivo de texto/", self.nome)
+
+
+        novo_nome = os.path.join("novo/arquivo de texto/", novo_nome)
+
+
+        os.rename(nome_atual, novo_nome)
+
+
+
     def apagarArquivoDeTexto(self):
         
-        nome_arquivo = "novo"
+        arquivo_com_caminho = f"novo/arquivo de texto/{self.nome}"
 
-        os.remove(self.nome)
+
+        os.remove(arquivo_com_caminho)
+
 
 
     def __del__(self):
 
         try:
-            os.remove(self.nome)
+            os.remove(f"novo/arquivo de texto/{self.nome}")
 
         except (FileNotFoundError):
 
