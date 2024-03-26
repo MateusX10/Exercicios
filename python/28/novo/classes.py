@@ -34,19 +34,13 @@ class ArquivoDeTexto:
 
         
         lista_extensoes_arquivo = [
-    "txt", "csv", "json", "xml", "yaml", "ini", "html", "css", "js",
-    "py", "java", "cpp", "c", "h", "hpp", "rb", "php", "pl", "sh",
-    "bat", "ps1", "exe", "dll", "lib", "obj", "pdb", "so", "dylib",
-    "zip", "tar", "gz", "bz2", "rar", "7z", "tar.gz", "tar.bz2", "iso",
-    "img", "bin", "cue", "mdf", "nrg", "avi", "mp4", "mkv", "wmv",
-    "mp3", "wav", "ogg", "flac", "jpg", "jpeg", "png", "gif", "bmp",
-    "tiff", "psd", "ai", "svg", "eps", "pdf", "doc", "docx", "xls",
-    "xlsx", "ppt", "pptx"
+    "txt", "csv", "json", "html", "css", "js",
+    "py", "java", "cpp", "c","php"
 ]
         # o arquivo possui uma extensão/formato
         if "." in nome:
 
-            nome_de_arquivo_dividido = nome.split(".")
+            nome_de_arquivo_dividido = nome.rsplit(".")
 
             if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
 
@@ -65,11 +59,11 @@ class ArquivoDeTexto:
         
     def __str__(self):
 
-        print(f'''Nome do arquivo de texto: {self.nome}\nTema: {self.tema}''')
+        print(f'''Nome do arquivo de texto: {self.nome}''')
 
 
 
-    def verifica_se_arquivo_esta_vazio(self):
+    def arquivo_existe(self):
 
 
         caminho_do_arquivo = "novo/arquivo de texto/"
@@ -93,6 +87,20 @@ class ArquivoDeTexto:
             return False
 
 
+
+    def arquivo_vazio(self):
+
+
+        caminho_completo_do_arquivo = os.path.join("novo/arquivo de texto", self.nome)
+
+
+        if os.path.getsize(caminho_completo_do_arquivo) == 0:
+
+            return True
+
+        else:
+
+            return False
 
     def adicionar_linha_de_texto(self, linha_de_texto):
 
@@ -221,38 +229,6 @@ class ArquivoDeTexto:
 
         os.remove(arquivo_com_caminho)
 
-
-
-    def __del__(self):
-
-        try:
-            os.remove(f"novo/arquivo de texto/{self.nome}")
-
-        except (FileNotFoundError):
-
-            print("\033[1;31mO arquivo não existe e/ou caminho incorreto.\033[m")
-
-
-        except (PermissionError):
-
-            print("\033[1;31mVocê não tem permissão para excluir esse arquivo.Por favor, verifique as permissões relacionadas ao arquivo e tente novamente.\033[m")
-
-
-        except (IsADirectoryError):
-
-            print("\033[1;31mVocê está excluindo um diretório, mas deveria ser um arquivo.\033[m")
-
-
-        except (OSError):
-
-            print("\033[1;31mOcorreu um problema em seu Sistema Operacional.Por favor, se possível, considere trocar de Sistema Operacional se você possuir dual boot e, se mesmo assim o problema persistir, use outro computador.\033[m")
-
-
-
-        else:
-
-
-            print("\033[1;32mArquivo excluído com sucesso.\033[m")
 
 
 

@@ -1,6 +1,6 @@
 def menu():
 
-    print('''Manu de opções:
+    print('''Menu de opções:
 [ 1 ] - Adicionar linha de texto
 [ 2 ] - Ler arquivo
 [ 3 ] - Editar arquivo
@@ -10,6 +10,16 @@ def menu():
 [ 7 ] - Excluir arquivo
 [ 8 ] - Sair
 ''')
+
+
+
+def menu2():
+
+    print('''Menu de opções:
+          
+[ 1 ] - Criar arquivo
+[ 2 ] - Sair
+    ''')
 
 
 
