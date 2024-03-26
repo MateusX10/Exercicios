@@ -8,7 +8,8 @@ def menu():
 [ 5 ] - Limpar arquivo
 [ 6 ] - Renomear arquivo
 [ 7 ] - Excluir arquivo
-[ 8 ] - Sair
+[ 8 ] - Copiar para um novo arquivo
+[ 9 ] - Sair
 ''')
 
 

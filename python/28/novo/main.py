@@ -39,7 +39,7 @@ while True:
     while arquivo_texto1.arquivo_existe():
 
         # opções do menu
-        opcoes_menu = [1, 2, 3, 4, 5, 6, 7, 8]
+        opcoes_menu = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
         # exibe o menu
         menu()
@@ -291,6 +291,51 @@ while True:
 
 
             elif escolhaUsuario == 8:
+
+
+                pasta_criada = False
+
+
+                while not pasta_criada:
+
+
+                    while True:
+
+
+                        nome_da_pasta = str(input("Nome da pasta onde ficará o novo arquivo: ")).strip()
+
+
+                        nome_e_valido = ArquivoDeTexto.valida_nome_da_pasta(nome_da_pasta)
+
+
+                        if nome_e_valido:
+
+                            break
+
+
+                        print("\033[1;31mNome de pasta inválido.Por favor, tente novamente.\033[m")
+
+
+                    pasta_ja_existe = ArquivoDeTexto.verifica_se_o_nome_da_pasta_especificado_ja_existe_no_diretorio(nome_da_pasta)
+
+
+                    if not pasta_ja_existe:
+                    
+                        ArquivoDeTexto.criar_pasta_para_o_arquivo(nome_da_pasta)
+
+                        pasta_criada = True
+
+                    
+                    else:
+
+
+                        print("\033[1;31mA pasta especificada já existe.Por favor, escolha outro nome de pasta.\033[m")
+
+
+
+
+
+            elif escolhaUsuario == 9:
 
                 exit(0)    
 

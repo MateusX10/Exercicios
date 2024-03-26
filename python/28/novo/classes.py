@@ -232,3 +232,87 @@ class ArquivoDeTexto:
 
 
 
+
+    @staticmethod
+    def valida_nome_da_pasta(nome_da_pasta):
+
+
+        nome_e_valido = True
+
+
+        caracteres_invalidos = ["?", "/", "\\", ":", "*", '"',
+                        "<", ">", "|"]
+
+
+        if len(nome_da_pasta) > 0:
+
+            for caracter in caracteres_invalidos:
+
+                if caracter in nome_da_pasta:
+
+                    nome_e_valido = False
+
+
+        else:
+
+
+            nome_e_valido = False
+
+
+        if nome_e_valido:
+
+            return True
+
+        else:
+
+            return False
+
+
+
+    @staticmethod
+    def criar_pasta_para_o_arquivo(nome_da_pasta):
+
+        caminho = "novo"
+
+
+        os.mkdir(f"{caminho}/{nome_da_pasta}")
+
+
+    @staticmethod
+    def verifica_se_o_nome_da_pasta_especificado_ja_existe_no_diretorio(nome_da_pasta_a_ser_criada):
+
+
+
+        pasta_ja_existe = False
+
+
+        lista_arquivos = os.listdir("novo/")
+
+
+        lista_pastas = [item for item in lista_arquivos if os.path.isdir(item)]
+
+
+        for pasta_do_diretorio in lista_pastas:
+
+            if nome_da_pasta_a_ser_criada == pasta_do_diretorio:
+
+                pasta_ja_existe = True
+
+
+        # a pasta não existe, criação permitida
+        if not pasta_ja_existe:
+
+            return False
+
+        # pasta não existe, criação negada
+        else:
+
+
+            return True
+
+
+
+
+
+
+    
