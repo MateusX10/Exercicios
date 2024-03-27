@@ -286,15 +286,20 @@ class ArquivoDeTexto:
         pasta_ja_existe = False
 
 
-        lista_arquivos = os.listdir("novo/")
+        caminho = "novo/"
 
 
-        lista_pastas = [item for item in lista_arquivos if os.path.isdir(item)]
+        lista_arquivos = os.listdir(caminho)
+
+
+        lista_pastas = [os.path.join(caminho, item) for item in lista_arquivos if os.path.isdir(os.path.join(caminho, item))]
+
+        print(lista_pastas)
 
 
         for pasta_do_diretorio in lista_pastas:
 
-            if nome_da_pasta_a_ser_criada == pasta_do_diretorio:
+            if f"{caminho}{nome_da_pasta_a_ser_criada}" == pasta_do_diretorio:
 
                 pasta_ja_existe = True
 
@@ -304,7 +309,7 @@ class ArquivoDeTexto:
 
             return False
 
-        # pasta não existe, criação negada
+        # pasta já existe, criação negada
         else:
 
 
