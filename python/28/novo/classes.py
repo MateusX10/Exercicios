@@ -278,6 +278,7 @@ class ArquivoDeTexto:
         os.mkdir(f"{caminho}/{nome_da_pasta}")
 
 
+
     @staticmethod
     def verifica_se_o_nome_da_pasta_especificado_ja_existe_no_diretorio(nome_da_pasta_a_ser_criada):
 
@@ -317,6 +318,41 @@ class ArquivoDeTexto:
 
 
 
+    @staticmethod
+    def cria_arquivo_de_copia(pasta, nome_do_arquivo):
+
+
+        caminho = f"novo/{pasta}/"
+
+        with open(os.path.join(caminho, nome_do_arquivo), "a"):
+
+            pass
+
+
+
+    @staticmethod
+    def valida_nome_do_arquivo(nome_do_arquivo):
+
+        lista_extensoes_arquivo = [
+    "txt", "csv", "json", "html", "css", "js",
+    "py", "java", "cpp", "c","php"
+]
+        # o arquivo possui uma extensão/formato
+        if "." in nome_do_arquivo:
+
+            nome_de_arquivo_dividido = nome_do_arquivo.rsplit(".")
+
+            if nome_de_arquivo_dividido[-1] not in lista_extensoes_arquivo:
+
+                nome_do_arquivo = "".join(nome_de_arquivo_dividido[:-1]) + ".txt"
+
+        # arquivo não possui uma extensão, é um arquivo sem formato
+        else:
+
+            nome_do_arquivo = f"{nome_do_arquivo}.txt"
+
+
+        return nome_do_arquivo
 
 
 
