@@ -295,6 +295,8 @@ while True:
 
                 pasta_criada = arquivo_criado = False
 
+                dados_do_arquivo_de_texto_principal = arquivo_texto1.retorna_lista_de_dados_do_arquivo_de_texto()
+
 
                 while not pasta_criada:
 
@@ -346,7 +348,10 @@ while True:
 
                     arquivo_criado = True
 
-                    
+                dados_do_arquivo_principal_formatados_em_string = arquivo_texto1.formata_dados_recebidos_do_arquivo_principal_para_string(dados_do_arquivo_de_texto_principal)
+                
+                arquivo_texto1.copia_dados_do_arquivo_principal_para_o_arquivo_de_copia (nome_da_pasta, novo_nome_arquivo, dados_do_arquivo_principal_formatados_em_string)
+
 
 
 

@@ -356,4 +356,29 @@ class ArquivoDeTexto:
 
 
 
-    
+    @staticmethod
+    def copia_dados_do_arquivo_principal_para_o_arquivo_de_copia(pasta, nome_do_arquivo, dados_do_arquivo_de_texto_principal):
+
+
+        nome_da_pasta = f"novo/{pasta}/"
+
+        with open(os.path.join(nome_da_pasta, nome_do_arquivo), 'w') as arquivo:
+
+            arquivo.write(dados_do_arquivo_de_texto_principal)
+
+
+
+
+    @staticmethod
+    def formata_dados_recebidos_do_arquivo_principal_para_string(dados_do_arquivo_principal):
+
+        dados_para_string = ''
+
+
+        for dado in dados_do_arquivo_principal:
+
+            dados_para_string += f"{dado}"
+
+
+        return dados_para_string
+
